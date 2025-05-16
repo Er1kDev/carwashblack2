@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import FondoAuto from "../assets/images/fondo-auto.webp";
+---
+
+<div class="flex flex-col items-center">
+  <Image
+    src={FondoAuto}
+    alt="Fondo de inicio de CarWash Black"
+    loading="eager"
+    class="object-cover h-full mask-x-from-70% mask-x-to-90% mask-y-from-70% mask-y-to-90% rounded-xl"
+  />
+
+  <div class="flex flex-col justify-center items-center -mt-20 md:-mt-40 z-10">
+    <h1
+      class="text-5xl md:text-7xl font-bold text-center hover:scale-110 transition-transform duration-300 animate-blurred-fade-in"
+    >
+      CarWash Black
+    </h1>
+    <h2
+      class="text-2xl md:text-4xl font-medium hover:scale-110 transition-transform duration-300 animate-blurred-fade-in"
+    >
+      Lavado de automóviles
+    </h2>
+    <p
+      class="text-base md:text-xl mt-4 uppercase font-light text-center py-2 px-4 rounded-full border animate-blurred-fade-in hover:bg-white hover:text-black transition-colors duration-300"
+    >
+      ¡vive rapido, lava limpio!
+    </p>
+
+    <div
+      class="pt-6 md:pt-8 gap-8 flex flex-row justify-center items-center animate-blurred-fade-in"
+    >
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-blue-600 p-2 hover:scale-125 transition-transform"
+      >
+        <svg class="w-8 h-8" fill="currentColor">
+          <title>Facebook</title>
+          <use href="#facebook-icon"></use>
+        </svg>
+      </a>
+
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-linear-to-tr from-yellow-300 via-pink-600 to-purple-600 p-2 hover:scale-125 transition-transform"
+      >
+        <svg class="w-8 h-8" fill="currentColor">
+          <title>Instagram</title>
+          <use href="#instagram-icon"></use>
+        </svg>
+      </a>
+      <a
+        href="https://wa.me/1234567890"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-green-500 p-2 hover:scale-125 transition-transform"
+      >
+        <svg class="w-8 h-8" fill="currentColor">
+          <title>WhatsApp</title>
+          <use href="#whatsapp-icon"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
