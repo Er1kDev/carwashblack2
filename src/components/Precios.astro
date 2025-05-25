@@ -46,18 +46,18 @@ const servicios = [
   <div class="grid grid-cols-1 gap-8 md:grid-cols-3 px-4 md:px-12">
     {
       servicios.map((servicio) => (
-        <div class="flex flex-col items-center border border-[#1C1C1C] bg-[#171717] rounded-lg shadow-lg py-2 hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col items-center border border-[#1C1C1C] bg-[#171717] rounded-lg shadow-sm shadow-[#4d4b4b] py-2 ">
           <div class="h-full flex flex-col items-center justify-start">
             <Image
               src={servicio.image}
               alt={servicio.nombre}
               loading="lazy"
-              class="object-cover h-40 md:h-60 rounded-xl"
+              class="object-cover h-40 md:h-60 rounded-xl scale-75 hover:scale-100 transition-transform duration-300"
             />
-            <h3 class="text-2xl md:text-3xl font-semibold py-2 text-center">
+            <h3 class="text-xl md:text-2xl font-semibold py-2 text-center">
               {servicio.nombre}
             </h3>
-            <p class="text-3xl font-semibold text-gray-300 mb-2 text-center">
+            <p class="text-2xl font-semibold text-gray-300 mb-2 text-center">
               {servicio.precio.toLocaleString("es-CL", {
                 style: "currency",
                 currency: "CLP",
