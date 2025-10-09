@@ -1,4 +1,14 @@
 ---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Carwash Black - Lavados de Autos",
+  description = "Carwash Black - Lavados de Autos",
+}: Props = Astro.props;
+
 import "../styles/global.css";
 import IconSprite from "@/components/IconSprite.astro";
 ---
@@ -8,9 +18,17 @@ import IconSprite from "@/components/IconSprite.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Carwash Black</title>
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Carwash Black, Lavado de Autos, Servicios de Lavado, Limpieza de Vehículos"
+    />
+    <meta name="author" content="Carwash Black" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
   </head>
   <body>
     <IconSprite />

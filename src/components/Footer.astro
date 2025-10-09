@@ -1,0 +1,21 @@
+---
+interface Props {
+  year?: number;
+  title?: string;
+  author?: string;
+}
+
+const {
+  year = new Date().getFullYear(),
+  title = "Carwash Black",
+  author = "Er1kDev",
+} = Astro.props;
+---
+
+<footer class="py-6 md:py-12 text-center border-t border-stone-800">
+  <p class="text-sm md:text-base font-thin">
+    &copy; {year} - {title}. Desarrollado por
+    <span class="text-blue-500 hover:underline font-bold"> {author}</span>
+    con Astro
+  </p>
+</footer>
