@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/react": "^4.4.0",
     "@fontsource-variable/onest": "^5.2.7",
+    "@fontsource/audiowide": "^5.2.7",
     "@fontsource/onest": "^5.2.7",
     "@midudev/tailwind-animations": "^0.2.0",
     "@radix-ui/react-slot": "^1.2.0",

@@ -27,20 +27,20 @@ const {
   <!-- TEXTO ENCIMA DE LA IMAGEN -->
   <div class="flex flex-col justify-center items-center -mt-20 md:-mt-40 z-10">
     <h1
-      class="text-5xl md:text-7xl font-extrabold text-center tracking-tight leading-tight hover:scale-105 transition-transform duration-700"
+      class="text-blur-effect text-4xl md:text-6xl lg:text-7xl text-center tracking-tight leading-tight hover:scale-105 transition-transform duration-500"
     >
       {title}
     </h1>
     <h2
-      class="text-2xl md:text-4xl font-medium text-white hover:scale-105 transition-transform duration-700"
+      class="text-blur-effect text-2xl md:text-3xl lg:text-4xl text-white hover:scale-105 transition-transform duration-500"
     >
       {subtitle}
     </h2>
-    <p
-      class="text-base md:text-xl mt-4 uppercase font-light text-center py-2 px-4 rounded-full bg-black border border-gray-300 hover:bg-white hover:text-black transition-colors duration-300"
+    <h3
+      class="text-lg md:text-xl mt-4 uppercase font-light text-center py-2 px-4 rounded-full border inset-shadow-sm inset-shadow-black bg-neutral-950 border-gray-300 hover:bg-white hover:text-stone-950 transition-colors duration-500"
     >
       {slogan}
-    </p>
+    </h3>
 
     <!-- ICONOS DE REDES SOCIALES -->
     <div class="pt-6 md:pt-8 gap-8 flex flex-row justify-center items-center">
@@ -48,7 +48,7 @@ const {
         href="https://web.facebook.com/profile.php?id=100086680427768"
         target="_blank"
         rel="noopener noreferrer"
-        class="rounded-full bg-blue-600 p-2 hover:scale-125 transition-transform"
+        class="rounded-full bg-blue-600 p-2 hover:scale-125 transition-transform duration-500"
       >
         <svg class="w-8 h-8" fill="currentColor">
           <title>Facebook</title>
@@ -60,7 +60,7 @@ const {
         href="https://www.instagram.com/carwash__black/"
         target="_blank"
         rel="noopener noreferrer"
-        class="rounded-full bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 p-2 hover:scale-125 transition-transform"
+        class="rounded-full bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 p-2 hover:scale-125 transition-transform duration-500"
       >
         <svg class="w-8 h-8" fill="currentColor">
           <title>Instagram</title>
@@ -71,7 +71,7 @@ const {
         href="https://api.whatsapp.com/send?phone=56939570405"
         target="_blank"
         rel="noopener noreferrer"
-        class="rounded-full bg-green-500 p-2 hover:scale-125 transition-transform"
+        class="rounded-full bg-green-500 p-2 hover:scale-125 transition-transform duration-500"
       >
         <svg class="w-8 h-8" fill="currentColor">
           <title>WhatsApp</title>
@@ -82,3 +82,9 @@ const {
     <!-- FIN ICONOS DE REDES SOCIALES -->
   </div>
 </div>
+
+<style>
+  .text-blur-effect {
+    text-shadow: 0 0 20px #e7e7e7;
+  }
+</style>
