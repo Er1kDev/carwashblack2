@@ -1,32 +1,26 @@
 ---
 import { Image } from "astro:assets";
-import FondoAuto from "../assets/images/fondo-auto.webp";
+import FondoLogo from "../assets/images/fondo-logo.webp";
 
 interface Props {
   title?: string;
   subtitle?: string;
   slogan?: string;
 }
-
-const {
-  title = "CarWash Black",
-  subtitle = "Lavado de automóviles",
-  slogan = "¡vive rapido, lava limpio!",
-} = Astro.props;
 ---
 
 <div class="flex flex-col items-center animate-blurred-fade-in">
   <!-- IMAGEN DE FONDO -->
   <Image
-    src={FondoAuto}
+    src={FondoLogo}
     alt="Fondo de inicio de CarWash Black"
     loading="eager"
-    class="object-cover h-full mask-x-from-70% mask-x-to-90% mask-y-from-70% mask-y-to-90% rounded-xl"
+    class="object-cover rounded-xl max-w-xs md:max-w-md"
   />
 
   <!-- TEXTO ENCIMA DE LA IMAGEN -->
-  <div class="flex flex-col justify-center items-center -mt-20 md:-mt-40 z-10">
-    <h1
+  <div class="flex flex-col justify-center items-center">
+    <!-- <h1
       class="text-blur-effect text-4xl md:text-6xl lg:text-7xl text-center tracking-tight leading-tight hover:scale-105 transition-transform duration-500"
     >
       {title}
@@ -40,47 +34,47 @@ const {
       class="text-lg md:text-xl mt-4 uppercase font-light text-center py-2 px-4 rounded-full border inset-shadow-sm inset-shadow-black bg-neutral-950 border-gray-300 hover:bg-white hover:text-stone-950 transition-colors duration-500"
     >
       {slogan}
-    </h3>
-
-    <!-- ICONOS DE REDES SOCIALES -->
-    <div class="pt-6 md:pt-8 gap-8 flex flex-row justify-center items-center">
-      <a
-        href="https://web.facebook.com/profile.php?id=100086680427768"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-full bg-blue-600 p-2 hover:scale-125 transition-transform duration-500"
-      >
-        <svg class="w-8 h-8" fill="currentColor">
-          <title>Facebook</title>
-          <use href="#facebook-icon"></use>
-        </svg>
-      </a>
-
-      <a
-        href="https://www.instagram.com/carwash__black/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-full bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 p-2 hover:scale-125 transition-transform duration-500"
-      >
-        <svg class="w-8 h-8" fill="currentColor">
-          <title>Instagram</title>
-          <use href="#instagram-icon"></use>
-        </svg>
-      </a>
-      <a
-        href="https://api.whatsapp.com/send?phone=56939570405"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-full bg-green-500 p-2 hover:scale-125 transition-transform duration-500"
-      >
-        <svg class="w-8 h-8" fill="currentColor">
-          <title>WhatsApp</title>
-          <use href="#whatsapp-icon"></use>
-        </svg>
-      </a>
-    </div>
-    <!-- FIN ICONOS DE REDES SOCIALES -->
+    </h3> -->
   </div>
+
+  <!-- ICONOS DE REDES SOCIALES -->
+  <div class="pt-6 md:pt-8 gap-8 flex flex-row justify-center items-center">
+    <a
+      href="https://web.facebook.com/profile.php?id=100086680427768"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full bg-blue-600 p-2 hover:scale-125 transition-transform duration-500"
+    >
+      <svg class="w-8 h-8" fill="currentColor">
+        <title>Facebook</title>
+        <use href="#facebook-icon"></use>
+      </svg>
+    </a>
+
+    <a
+      href="https://www.instagram.com/carwash__black/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full bg-linear-to-tr from-yellow-300 via-pink-600 to-purple-600 p-2 hover:scale-125 transition-transform duration-500"
+    >
+      <svg class="w-8 h-8" fill="currentColor">
+        <title>Instagram</title>
+        <use href="#instagram-icon"></use>
+      </svg>
+    </a>
+    <a
+      href="https://api.whatsapp.com/send?phone=56939570405"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full bg-green-500 p-2 hover:scale-125 transition-transform duration-500"
+    >
+      <svg class="w-8 h-8" fill="currentColor">
+        <title>WhatsApp</title>
+        <use href="#whatsapp-icon"></use>
+      </svg>
+    </a>
+  </div>
+  <!-- FIN ICONOS DE REDES SOCIALES -->
 </div>
 
 <style>

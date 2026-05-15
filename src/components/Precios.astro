@@ -1,48 +1,104 @@
 ---
 import { Image } from "astro:assets";
-import automovilesImage from "../assets/images/automoviles.webp";
-import motoEnduroImage from "../assets/images/moto_enduro.webp";
-import furgonImage from "../assets/images/furgon.webp";
-import suvJeepImage from "../assets/images/suv_jeep.webp";
-import camionetaImage from "../assets/images/camioneta.webp";
-import camionetasXlImage from "../assets/images/camionetas_xl.webp";
+// import automovilesImage from "../assets/images/automoviles.webp";
+// import motoEnduroImage from "../assets/images/moto_enduro.webp";
+// import furgonImage from "../assets/images/furgon.webp";
+// import suvJeepImage from "../assets/images/suv_jeep.webp";
+// import camionetaImage from "../assets/images/camioneta.webp";
+// import camionetasXlImage from "../assets/images/camionetas_xl.webp";
+
+import moto_enduro_black from "../assets/images/moto_enduro_black.webp";
+import city_card_sedan from "../assets/images/auto-citycar.webp";
+import furgon from "../assets/images/furgon-black.webp";
+import suv_jeep from "../assets/images/suvjeppblack.webp";
+import camionetas from "../assets/images/camioneta-black.webp";
+import camionetas_xl from "../assets/images/jeepxl.webp";
 
 const servicios = [
   {
     nombre: "Motocicletas Enduros",
     precio: 10000,
-    image: motoEnduroImage,
+    image: moto_enduro_black,
   },
   {
     nombre: "City Car & Sedán",
     precio: 18000,
-    image: automovilesImage,
+    image: city_card_sedan,
   },
   {
     nombre: "Furgón",
     precio: 20000,
-    image: furgonImage,
+    image: furgon,
   },
   {
     nombre: "Suv o Jeep",
     precio: 25000,
-    image: suvJeepImage,
+    image: suv_jeep,
   },
   {
     nombre: "Camionetas",
     precio: 28000,
-    image: camionetaImage,
+    image: camionetas,
   },
   {
     nombre: "Camionetas XL",
     precio: 30000,
-    image: camionetasXlImage,
+    image: camionetas_xl,
   },
 ];
 ---
 
 <div class="pb-10 animate-blurred-fade-in">
-  <h3 class="py-12 text-center text-4xl md:text-4xl font-semibold">Precios</h3>
+  <h3 class="py-12 text-center text-4xl md:text-4xl font-semibold">
+    <span class="">Precios</span>
+  </h3>
+
+  <section class="min-h-screen">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        servicios.map((servicio, index) => (
+          <article class="group flex flex-col overflow-hidden rounded-2xl bg-neutral-900 border border-lime-500/20 hover:border-lime-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-lime-500/10">
+            <div class="relative h-60 overflow-hidden bg-black">
+              <Image
+                src={servicio.image}
+                alt={servicio.nombre}
+                class="h-full w-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+            </div>
+
+            <div class="flex flex-col flex-1 justify-between p-6 text-white">
+              <div>
+                <h2 class="text-2xl font-black italic text-lime-500 group-hover:text-white transition-colors duration-300">
+                  {servicio.nombre}
+                </h2>
+              </div>
+
+              <div class="mt-4 space-y-4 border-t border-lime-500/20 pt-4">
+                <p class="text-3xl font-black ">
+                  {servicio.precio.toLocaleString("es-CL", {
+                    style: "currency",
+                    currency: "CLP",
+                  })}
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-black/50 px-6 py-3 text-center border-t border-lime-500/10">
+              <p class="text-xs tracking-[0.2em] font-semibold">
+                <span class="text-gray-400">CARWASH</span>
+                <span class="text-lime-500"> BLACK</span>
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    /* 
+  <!-- SECCIÓN ALTERNATIVA: Grid listado de servicios -->
   <div class="grid grid-cols-1 gap-8 md:grid-cols-3 px-4 md:px-12">
     {
       servicios.map((servicio) => (
@@ -68,4 +124,7 @@ const servicios = [
       ))
     }
   </div>
+  -->
+  */
+  }
 </div>
