@@ -1,84 +1,97 @@
 ---
 import { Image } from "astro:assets";
-import FondoLogo from "../assets/images/logo.webp";
+import Logo from "../assets/images/logo.webp";
+import { site, whatsappLink } from "../lib/site";
 
-interface Props {
-  title?: string;
-  subtitle?: string;
-  slogan?: string;
-}
+const redes = [
+  {
+    href: site.social.facebook,
+    label: "Facebook",
+    icon: "facebook-icon",
+    className: "bg-blue-600",
+  },
+  {
+    href: site.social.instagram,
+    label: "Instagram",
+    icon: "instagram-icon",
+    className:
+      "bg-linear-to-tr from-yellow-300 via-pink-600 to-purple-600",
+  },
+  {
+    href: site.social.whatsapp,
+    label: "Catálogo de WhatsApp",
+    icon: "whatsapp-icon",
+    className: "bg-green-500",
+  },
+];
 ---
 
-<div class="flex flex-col items-center animate-blurred-fade-in">
-  <!-- IMAGEN DE FONDO -->
+<section id="inicio" class="flex flex-col items-center pt-14 md:pt-16">
   <Image
-    src={FondoLogo}
-    alt="Fondo de inicio de CarWash Black"
+    src={Logo}
+    alt="Logo de Carwash Black, lavado premium automotriz en Linares"
     loading="eager"
-    class="object-cover rounded-xl max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl opacity-80"
+    fetchpriority="high"
+    widths={[256, 512, 1024]}
+    sizes="(min-width: 1024px) 512px, (min-width: 768px) 448px, 320px"
+    class="w-full max-w-xs object-contain md:max-w-md lg:max-w-lg"
   />
 
-  <!-- TEXTO ENCIMA DE LA IMAGEN -->
-  <div class="flex flex-col justify-center items-center">
-    <!-- <h1
-      class="text-blur-effect text-4xl md:text-6xl lg:text-7xl text-center tracking-tight leading-tight hover:scale-105 transition-transform duration-500"
-    >
-      {title}
-    </h1>
-    <h2
-      class="text-blur-effect text-2xl md:text-3xl lg:text-4xl text-white hover:scale-105 transition-transform duration-500"
-    >
-      {subtitle}
-    </h2>
-    <h3
-      class="text-lg md:text-xl mt-4 uppercase font-light text-center py-2 px-4 rounded-full border inset-shadow-sm inset-shadow-black bg-neutral-950 border-gray-300 hover:bg-white hover:text-stone-950 transition-colors duration-500"
-    >
-      {slogan}
-    </h3> -->
-  </div>
+  <h1
+    class="mt-6 max-w-2xl text-center text-2xl leading-tight md:mt-8 md:text-4xl"
+  >
+    Lavado y detailing <span class="text-lime-500">premium</span> en Linares
+  </h1>
 
-  <!-- ICONOS DE REDES SOCIALES -->
-  <div class="pt-6 md:pt-8 gap-8 flex flex-row justify-center items-center">
-    <a
-      href="https://web.facebook.com/profile.php?id=100086680427768"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded-full bg-blue-600 p-2 hover:scale-125 transition-transform duration-500"
-    >
-      <svg class="w-8 h-8" fill="currentColor">
-        <title>Facebook</title>
-        <use href="#facebook-icon"></use>
-      </svg>
-    </a>
+  <p class="mt-3 max-w-md text-center text-sm text-gray-400 md:text-base">
+    Lavado full, interior profundo y protección de pintura. Retiro y entrega a
+    domicilio.
+  </p>
 
+  <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row">
     <a
-      href="https://www.instagram.com/carwash__black/"
+      href={whatsappLink("Hola, quiero agendar un lavado en Carwash Black.")}
       target="_blank"
       rel="noopener noreferrer"
-      class="rounded-full bg-linear-to-tr from-yellow-300 via-pink-600 to-purple-600 p-2 hover:scale-125 transition-transform duration-500"
+      class="inline-flex items-center gap-2 rounded-full bg-lime-500 px-6 py-3 text-sm font-bold text-black transition hover:bg-lime-400 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
     >
-      <svg class="w-8 h-8" fill="currentColor">
-        <title>Instagram</title>
-        <use href="#instagram-icon"></use>
-      </svg>
-    </a>
-    <a
-      href="https://wa.me/c/56939570405"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded-full bg-green-500 p-2 hover:scale-125 transition-transform duration-500"
-    >
-      <svg class="w-8 h-8" fill="currentColor">
-        <title>WhatsApp</title>
+      <svg class="h-5 w-5" fill="currentColor" aria-hidden="true">
         <use href="#whatsapp-icon"></use>
       </svg>
+      Agendar por WhatsApp
+    </a>
+
+    <a
+      href="#precios"
+      class="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-lime-500/60 hover:text-lime-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+    >
+      Ver precios
     </a>
   </div>
-  <!-- FIN ICONOS DE REDES SOCIALES -->
-</div>
 
-<style>
-  .text-blur-effect {
-    text-shadow: 0 0 20px #e7e7e7;
-  }
-</style>
+  <p
+    class="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-gray-500"
+  >
+    <span>Lun a Vie 18:00 - 20:00</span>
+    <span aria-hidden="true">·</span>
+    <span>Sáb 10:00 - 14:00</span>
+  </p>
+
+  <div class="flex flex-row items-center justify-center gap-6 pt-6 md:gap-8 md:pt-8">
+    {
+      redes.map((red) => (
+        <a
+          href={red.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={red.label}
+          class={`rounded-full p-2 transition-transform duration-300 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${red.className}`}
+        >
+          <svg class="h-7 w-7" fill="currentColor" aria-hidden="true">
+            <use href={`#${red.icon}`}></use>
+          </svg>
+        </a>
+      ))
+    }
+  </div>
+</section>

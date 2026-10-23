@@ -1,535 +1,152 @@
 ---
-import Image from "astro/components/Image.astro";
-import FondoLogo from "../assets/images/auto-interior.webp";
+import { Image } from "astro:assets";
 import AutoExterior from "../assets/images/auto-exterior.webp";
+import AutoInterior from "../assets/images/auto-interior.webp";
 import AutoCerca from "../assets/images/auto-cerca.webp";
+import JeepXl from "../assets/images/jeepxl.webp";
 import EntregaLlave from "../assets/images/entrega-llaves.webp";
 import Motocicleta from "../assets/images/motocicleta-servicio.webp";
+
+const servicios = [
+  {
+    numero: 1,
+    titulo: "BLACK",
+    acento: "PREMIUM",
+    imagen: AutoExterior,
+    alt: "Auto negro con espuma durante un lavado premium",
+    descripcion: "Servicio completo premium",
+    incluye: [
+      "Exterior detallado",
+      "Interior profundo",
+      "Protección y brillo",
+      "Acabado premium",
+    ],
+  },
+  {
+    numero: 2,
+    titulo: "BLACK",
+    acento: "INTERIOR",
+    imagen: AutoInterior,
+    alt: "Limpieza profunda del interior de un vehículo",
+    descripcion: "Limpieza interior profunda",
+    incluye: [
+      "Aspirado completo",
+      "Paneles y plásticos",
+      "Eliminación de polvo",
+      "Aromatización premium",
+    ],
+  },
+  {
+    numero: 3,
+    titulo: "BLACK",
+    acento: "EXPRESS",
+    imagen: AutoCerca,
+    alt: "Detalle del capó con gotas de agua tras un lavado exterior",
+    descripcion: "Lavado exterior rápido y eficiente",
+    incluye: [
+      "Espuma activa",
+      "Limpieza de llantas",
+      "Secado premium",
+      "Terminación brillante",
+    ],
+  },
+  {
+    numero: 4,
+    titulo: "PROTECCIÓN Y",
+    acento: "BRILLO",
+    imagen: JeepXl,
+    alt: "SUV negro con acabado brillante y protegido",
+    descripcion: "Protección visual y acabado brillante",
+    incluye: [
+      "Productos premium",
+      "Protección de pintura",
+      "Acabado brillante",
+      "Efecto renovado",
+    ],
+  },
+  {
+    numero: 5,
+    titulo: "RETIRO Y",
+    acento: "ENTREGA A DOMICILIO",
+    imagen: EntregaLlave,
+    alt: "Entrega de llaves de un vehículo lavado",
+    descripcion: "Comodidad y seguridad para ti",
+    incluye: [
+      "Retiro del vehículo",
+      "Entrega coordinada",
+      "Atención rápida y segura",
+    ],
+  },
+  {
+    numero: 6,
+    titulo: "MOTOCICLETAS",
+    acento: "ENDURO",
+    imagen: Motocicleta,
+    alt: "Motocicleta enduro después de su lavado",
+    descripcion: "Limpieza especializada para tu moto",
+    incluye: [
+      "Hidrolavado snow foam",
+      "Eliminación de barro",
+      "Terminación renovada",
+    ],
+  },
+];
 ---
 
-<div class="py-6 md:py-12 animate-blurred-fade-in">
-  <!-- <div class="grid grid-cols-1 gap-8 md:grid-cols-2 px-4 md:px-12">
+<div id="servicios" class="scroll-mt-20 py-6 md:py-12">
+  <h3 class="py-12 text-center text-4xl font-semibold">Servicios</h3>
 
-
-    <div
-      class="w-full flex flex-col items-center rounded-lg py-4 inset-shadow-sm inset-shadow-black bg-neutral-950"
-    >
-      <div class="h-full flex flex-col items-center justify-start">
-        <h2 class="text-2xl md:text-3xl font-semibold py-4">
-          <span class="flex flex-col items-center justify-center gap-2">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              class="animate-spin-slow"
-            >
-              <use xlink:href="#wash-icon"></use>
-            </svg>
-            <span class="text-center">Lavado Full Incluye</span>
-          </span>
-        </h2>
-        <p class="text-base md:text-xl text-center mb-2 italic">
-          Aspirado Profundo Completo
-        </p>
-        <p class="text-base md:text-xl text-center mb-2 italic">
-          Silicona Interior
-        </p>
-        <p class="text-base md:text-xl text-center mb-2 italic">
-          Hidrolavado Snowfoam
-        </p>
-        <p class="text-base md:text-xl text-center mb-2 italic">
-          Renovador de Plásticos y Neumáticos
-        </p>
-        <p class="text-base md:text-xl text-center mb-2 italic">
-          Perfumado Final
-        </p>
-      </div>
-    </div>
-    <div
-      class="flex flex-col items-center rounded-lg py-4 inset-shadow-sm inset-shadow-black bg-neutral-950"
-    >
-      <div class="h-full flex flex-col items-center justify-start">
-        <h2 class="text-2xl md:text-3xl font-semibold text-center py-4">
-          <span class="flex flex-col items-center justify-center gap-2">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              class="animate-pulse"
-            >
-              <use xlink:href="#icon-calendar-week"></use>
-            </svg>
-            <span class="text-center">Horarios</span>
-          </span>
-        </h2>
-
-        <p class="text-xl md:text-2xl text-center mb-2">Lunes a Viernes</p>
-        <p class="text-lg md:text-xl text-center mb-2 italic">18:00 - 20:00</p>
-        <p class="text-xl md:text-2xl text-center mb-2">Sábados</p>
-        <p class="text-lg md:text-xl text-center mb-2 italic">10:00 - 14:00</p>
-      </div>
-    </div>
-  </div> -->
-
-  <h3 class="py-12 text-center text-4xl md:text-4xl font-semibold">
-    <span class="">Servicios</span>
-  </h3>
-
-  <section class="min-h-screen">
+  <section>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <!-- CARD 1 -->
-      <article
-        class="group relative overflow-hidden rounded-2xl bg-neutral-900 animate-fade-in-up hover:shadow-2xl hover:shadow-lime-500/20 transition-all duration-500 hover:scale-105"
-        style="animation-delay: 100ms"
-      >
-        <Image
-          src={AutoExterior}
-          alt="Black Premium"
-          class="h-105 w-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"
-        >
-        </div>
-
-        <div
-          class="absolute bottom-0 p-6 text-white w-full transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
-        >
-          <h2
-            class="text-3xl font-black italic text-center animate-fade-in-up"
-            style="animation-delay: 200ms"
+      {
+        servicios.map((servicio, index) => (
+          <article
+            class="group relative animate-fade-in-up overflow-hidden rounded-2xl bg-neutral-900 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-lime-500/20"
+            style={`animation-delay: ${(index + 1) * 100}ms`}
           >
-            1. BLACK <span
-              class="text-lime-500 group-hover:text-white transition-colors duration-300"
-              >PREMIUM</span
-            >
-          </h2>
+            <Image
+              src={servicio.imagen}
+              alt={servicio.alt}
+              loading={index < 3 ? "eager" : "lazy"}
+              class="h-105 w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
+            />
 
-          <p
-            class="mt-2 text-sm text-gray-300 text-center animate-fade-in-up opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="animation-delay: 300ms"
-          >
-            Servicio completo premium
-          </p>
+            <div class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent" />
 
-          <div class="mt-6 grid grid-cols-4 gap-4 text-center">
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 400ms"
-            >
-              <p class="mt-1 text-xs">Exterior detallado</p>
+            <div class="absolute bottom-0 w-full translate-y-0 p-6 text-white transition-transform duration-500 group-hover:-translate-y-2">
+              <h2 class="animate-fade-in-up text-center text-3xl font-black italic">
+                {servicio.numero}. {servicio.titulo}{" "}
+                <span class="text-lime-500 transition-colors duration-300 group-hover:text-white">
+                  {servicio.acento}
+                </span>
+              </h2>
+
+              <p class="mt-2 text-center text-sm text-gray-300">
+                {servicio.descripcion}
+              </p>
+
+              <div
+                class={`mt-6 grid gap-4 text-center ${
+                  servicio.incluye.length === 4 ? "grid-cols-4" : "grid-cols-3"
+                }`}
+              >
+                {servicio.incluye.map((item) => (
+                  <div class="transition-transform duration-300 hover:scale-110">
+                    <p class="mt-1 text-xs">{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div class="mt-6 hidden text-center md:block md:opacity-0 md:transition-opacity md:duration-500 md:group-hover:opacity-100">
+                <h3 class="text-xl font-black italic">
+                  CAR<span class="text-lime-500">WASH</span>
+                </h3>
+                <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
+              </div>
             </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 500ms"
-            >
-              <p class="mt-1 text-xs">Interior profundo</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 600ms"
-            >
-              <p class="mt-1 text-xs">Protección y brillo</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 700ms"
-            >
-              <p class="mt-1 text-xs">Acabado premium</p>
-            </div>
-          </div>
-
-          <div
-            class="mt-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <h3 class="text-xl font-black italic">
-              CAR<span class="text-lime-500">WASH</span>
-            </h3>
-
-            <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 2 -->
-      <article
-        class="group relative overflow-hidden rounded-2xl bg-neutral-900 animate-fade-in-up hover:shadow-2xl hover:shadow-lime-500/20 transition-all duration-500 hover:scale-105"
-        style="animation-delay: 200ms"
-      >
-        <Image
-          src={FondoLogo}
-          alt="Black Interior"
-          class="h-105 w-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"
-        >
-        </div>
-
-        <div
-          class="absolute bottom-0 p-6 text-white text-center w-full transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
-        >
-          <h2
-            class="text-3xl font-black italic animate-fade-in-up"
-            style="animation-delay: 200ms"
-          >
-            2. BLACK <span
-              class="text-lime-500 group-hover:text-white transition-colors duration-300"
-              >INTERIOR</span
-            >
-          </h2>
-
-          <p
-            class="mt-2 text-sm text-gray-300 animate-fade-in-up opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="animation-delay: 300ms"
-          >
-            Limpieza interior profunda
-          </p>
-
-          <div class="mt-6 grid grid-cols-4 gap-4 text-center">
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 400ms"
-            >
-              <p class="mt-1 text-xs">Aspirado completo</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 500ms"
-            >
-              <p class="mt-1 text-xs">Paneles y plásticos</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 600ms"
-            >
-              <p class="mt-1 text-xs">Eliminación de polvo</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 700ms"
-            >
-              <p class="mt-1 text-xs">Aromatización premium</p>
-            </div>
-          </div>
-
-          <div
-            class="mt-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <h3 class="text-xl font-black italic">
-              CAR<span class="text-lime-500">WASH</span>
-            </h3>
-
-            <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 3 -->
-      <article
-        class="group relative overflow-hidden rounded-2xl bg-neutral-900 animate-fade-in-up hover:shadow-2xl hover:shadow-lime-500/20 transition-all duration-500 hover:scale-105"
-        style="animation-delay: 300ms"
-      >
-        <Image
-          src={AutoExterior}
-          alt="Black Interior"
-          class="h-105 w-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"
-        >
-        </div>
-
-        <div
-          class="absolute bottom-0 p-6 text-white text-center w-full transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
-        >
-          <h2
-            class="text-3xl font-black italic animate-fade-in-up"
-            style="animation-delay: 200ms"
-          >
-            3. BLACK <span
-              class="text-lime-500 group-hover:text-white transition-colors duration-300"
-              >EXPRESS</span
-            >
-          </h2>
-
-          <p
-            class="mt-2 text-sm text-gray-300 animate-fade-in-up opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="animation-delay: 300ms"
-          >
-            Lavado exterior rápido y eficiente
-          </p>
-
-          <div class="mt-6 grid grid-cols-4 gap-4 text-center">
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 400ms"
-            >
-              <p class="mt-1 text-xs">Espuma activa</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 500ms"
-            >
-              <p class="mt-1 text-xs">Limpieza de llantas</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 600ms"
-            >
-              <p class="mt-1 text-xs">Secado Premium</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 700ms"
-            >
-              <p class="mt-1 text-xs">Terminación brillante</p>
-            </div>
-          </div>
-
-          <div
-            class="mt-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <h3 class="text-xl font-black italic">
-              CAR<span class="text-lime-500">WASH</span>
-            </h3>
-
-            <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 4 -->
-      <article
-        class="group relative overflow-hidden rounded-2xl bg-neutral-900 animate-fade-in-up hover:shadow-2xl hover:shadow-lime-500/20 transition-all duration-500 hover:scale-105"
-        style="animation-delay: 400ms"
-      >
-        <Image
-          src={AutoCerca}
-          alt="Black Interior"
-          class="h-105 w-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"
-        >
-        </div>
-
-        <div
-          class="absolute bottom-0 p-6 text-white text-center w-full transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
-        >
-          <h2
-            class="text-3xl font-black italic uppercase animate-fade-in-up"
-            style="animation-delay: 200ms"
-          >
-            4. <span
-              class="text-lime-500 group-hover:text-white transition-colors duration-300"
-              >protección y brillo</span
-            >
-          </h2>
-
-          <p
-            class="mt-2 text-sm text-gray-300 animate-fade-in-up opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="animation-delay: 300ms"
-          >
-            Protección visual y acabado brillante
-          </p>
-
-          <div class="mt-6 grid grid-cols-4 gap-4 text-center">
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 400ms"
-            >
-              <p class="mt-1 text-xs">Productos premium</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 500ms"
-            >
-              <p class="mt-1 text-xs">Protección de pintura</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 600ms"
-            >
-              <p class="mt-1 text-xs">Acabado brillante</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 700ms"
-            >
-              <p class="mt-1 text-xs">Efecto renovado</p>
-            </div>
-          </div>
-
-          <div
-            class="mt-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <h3 class="text-xl font-black italic">
-              CAR<span class="text-lime-500">WASH</span>
-            </h3>
-
-            <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 5 -->
-      <article
-        class="group relative overflow-hidden rounded-2xl bg-neutral-900 animate-fade-in-up hover:shadow-2xl hover:shadow-lime-500/20 transition-all duration-500 hover:scale-105"
-        style="animation-delay: 500ms"
-      >
-        <Image
-          src={EntregaLlave}
-          alt="Black Interior"
-          class="h-105 w-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"
-        >
-        </div>
-
-        <div
-          class="absolute bottom-0 p-6 text-white text-center w-full transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
-        >
-          <h2
-            class="text-3xl font-black italic uppercase animate-fade-in-up"
-            style="animation-delay: 200ms"
-          >
-            5. <span
-              class="text-lime-500 group-hover:text-white transition-colors duration-300"
-              >retiro y entrega</span
-            > a domicilio
-          </h2>
-
-          <p
-            class="mt-2 text-sm text-gray-300 animate-fade-in-up opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="animation-delay: 300ms"
-          >
-            Comodidad y seguridad para ti
-          </p>
-
-          <div class="mt-6 grid grid-cols-3 gap-4 text-center">
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 400ms"
-            >
-              <p class="mt-1 text-xs">Retiro del vehiculo</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 500ms"
-            >
-              <p class="mt-1 text-xs">Entrega coordinada</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 600ms"
-            >
-              <p class="mt-1 text-xs">Atención rápida y segura</p>
-            </div>
-          </div>
-
-          <div
-            class="mt-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <h3 class="text-xl font-black italic">
-              CAR<span class="text-lime-500">WASH</span>
-            </h3>
-
-            <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 6 -->
-      <article
-        class="group relative overflow-hidden rounded-2xl bg-neutral-900 animate-fade-in-up hover:shadow-2xl hover:shadow-lime-500/20 transition-all duration-500 hover:scale-105"
-        style="animation-delay: 600ms"
-      >
-        <Image
-          src={Motocicleta}
-          alt="Black Interior"
-          class="h-105 w-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent"
-        >
-        </div>
-
-        <div
-          class="absolute bottom-0 p-6 text-white text-center w-full transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
-        >
-          <h2
-            class="text-3xl font-black italic uppercase animate-fade-in-up"
-            style="animation-delay: 200ms"
-          >
-            6. Motocicletas <span
-              class="text-lime-500 group-hover:text-white transition-colors duration-300"
-              >enduro</span
-            >
-          </h2>
-
-          <p
-            class="mt-2 text-sm text-gray-300 animate-fade-in-up opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="animation-delay: 300ms"
-          >
-            Limpieza especializada para tu moto
-          </p>
-
-          <div class="mt-6 grid grid-cols-3 gap-4 text-center">
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 400ms"
-            >
-              <p class="mt-1 text-xs">Hidrolavado Snow foam</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 500ms"
-            >
-              <p class="mt-1 text-xs">Eliminación de barro</p>
-            </div>
-
-            <div
-              class="transform hover:scale-125 transition-transform duration-300 hover:animate-bounce"
-              style="animation-delay: 600ms"
-            >
-              <p class="mt-1 text-xs">Terminación renovada</p>
-            </div>
-          </div>
-
-          <div
-            class="mt-6 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <h3 class="text-xl font-black italic">
-              CAR<span class="text-lime-500">WASH</span>
-            </h3>
-
-            <p class="text-xs tracking-[0.4em] text-gray-400">BLACK</p>
-          </div>
-        </div>
-      </article>
+          </article>
+        ))
+      }
     </div>
   </section>
 </div>

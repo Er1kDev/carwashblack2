@@ -1,0 +1,20 @@
+---
+import { whatsappLink } from "../lib/site";
+---
+
+<a
+  href={whatsappLink("Hola, quiero agendar un lavado en Carwash Black.")}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Agendar por WhatsApp"
+  class="group fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 rounded-full bg-green-500 p-3.5 text-black shadow-lg shadow-green-500/30 transition hover:bg-green-400 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-300 md:right-6 md:bottom-6"
+>
+  <svg class="h-6 w-6" fill="currentColor" aria-hidden="true">
+    <use href="#whatsapp-icon"></use>
+  </svg>
+  <span
+    class="hidden max-w-0 overflow-hidden text-sm font-bold whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-40 group-hover:pr-1 group-hover:opacity-100 md:inline"
+  >
+    Agendar
+  </span>
+</a>

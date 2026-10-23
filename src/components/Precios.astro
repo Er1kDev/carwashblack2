@@ -1,93 +1,81 @@
 ---
 import { Image } from "astro:assets";
-// import automovilesImage from "../assets/images/automoviles.webp";
-// import motoEnduroImage from "../assets/images/moto_enduro.webp";
-// import furgonImage from "../assets/images/furgon.webp";
-// import suvJeepImage from "../assets/images/suv_jeep.webp";
-// import camionetaImage from "../assets/images/camioneta.webp";
-// import camionetasXlImage from "../assets/images/camionetas_xl.webp";
+import { whatsappLink } from "../lib/site";
 
 import moto_enduro_black from "../assets/images/moto_enduro_black.webp";
-import city_card_sedan from "../assets/images/auto-citycar.webp";
+import spark from "../assets/images/spark.webp";
+import mazda6 from "../assets/images/mazda6.webp";
 import suv_jeep from "../assets/images/suvjeppblack.webp";
 import camionetas from "../assets/images/camioneta-black.webp";
 import camionetas_xl from "../assets/images/ford-f150.webp";
-import spark from "../assets/images/spark.webp";
-import mazda6 from "../assets/images/mazda6.webp";
 
 const servicios = [
   {
-    nombre: "Motocicletas Enduros",
+    nombre: "Motocicletas Enduro",
     precio: 10000,
     image: moto_enduro_black,
   },
-  {
-    nombre: "City Car",
-    precio: 15000,
-    image: spark,
-  },
-  {
-    nombre: "Sedán",
-    precio: 20000,
-    image: mazda6,
-  },
-
-  {
-    nombre: "Suv o Jeep",
-    precio: 25000,
-    image: suv_jeep,
-  },
-  {
-    nombre: "Camionetas",
-    precio: 30000,
-    image: camionetas,
-  },
-  {
-    nombre: "Camionetas XL",
-    precio: 35000,
-    image: camionetas_xl,
-  },
+  { nombre: "City Car", precio: 15000, image: spark },
+  { nombre: "Sedán", precio: 20000, image: mazda6 },
+  { nombre: "Suv o Jeep", precio: 25000, image: suv_jeep },
+  { nombre: "Camionetas", precio: 30000, image: camionetas },
+  { nombre: "Camionetas XL", precio: 35000, image: camionetas_xl },
 ];
+
+const precioCLP = (valor: number) =>
+  valor.toLocaleString("es-CL", { style: "currency", currency: "CLP" });
 ---
 
-<div class="pb-10 animate-blurred-fade-in">
-  <h3 class="py-12 text-center text-4xl md:text-4xl font-semibold">
-    <span class="">Precios</span>
-  </h3>
+<div id="precios" class="scroll-mt-20 pb-10">
+  <h3 class="py-12 text-center text-4xl font-semibold">Precios</h3>
 
-  <section class="min-h-screen">
+  <p class="-mt-6 mb-8 text-center text-sm text-gray-400">
+    Elige tu vehículo y agenda por WhatsApp.
+  </p>
+
+  <section>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
-        servicios.map((servicio, index) => (
-          <article class="group flex flex-col overflow-hidden rounded-2xl bg-neutral-900 border border-lime-500/20 hover:border-lime-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-lime-500/10">
+        servicios.map((servicio) => (
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-lime-500/20 bg-neutral-900 transition-all duration-500 hover:border-lime-500/50 hover:shadow-lg hover:shadow-lime-500/10">
             <div class="relative h-60 overflow-hidden bg-black">
               <Image
                 src={servicio.image}
-                alt={servicio.nombre}
-                class="h-full w-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                alt={`${servicio.nombre} para lavado`}
+                loading="lazy"
+                class="h-full w-full object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
             </div>
 
-            <div class="flex flex-col flex-1 justify-between p-6 text-white">
+            <div class="flex flex-1 flex-col justify-between p-6 text-white">
               <div>
-                <h2 class="text-2xl text-center font-black italic text-lime-500 group-hover:text-white transition-colors duration-300">
+                <h2 class="text-center text-2xl font-black italic text-lime-500 transition-colors duration-300 group-hover:text-white">
                   {servicio.nombre}
                 </h2>
               </div>
 
-              <div class="mt-4 space-y-4 border-t text-center border-lime-500/20 pt-4">
-                <p class="text-2xl  ">
-                  {servicio.precio.toLocaleString("es-CL", {
-                    style: "currency",
-                    currency: "CLP",
-                  })}
-                </p>
+              <div class="mt-4 space-y-4 border-t border-lime-500/20 pt-4 text-center">
+                <p class="text-2xl">{precioCLP(servicio.precio)}</p>
+
+                <a
+                  href={whatsappLink(
+                    `Hola, quiero agendar un lavado para ${servicio.nombre}.`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 rounded-full border border-lime-500/40 px-5 py-2 text-sm font-semibold text-lime-400 transition hover:bg-lime-500 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+                >
+                  <svg class="h-4 w-4" fill="currentColor" aria-hidden="true">
+                    <use href="#whatsapp-icon" />
+                  </svg>
+                  Agendar
+                </a>
               </div>
             </div>
 
-            <div class="bg-black/50 px-6 py-3 text-center border-t border-lime-500/10">
-              <p class="text-xs tracking-[0.2em] font-semibold">
+            <div class="border-t border-lime-500/10 bg-black/50 px-6 py-3 text-center">
+              <p class="text-xs font-semibold tracking-[0.2em]">
                 <span class="text-gray-400">CARWASH</span>
                 <span class="text-lime-500"> BLACK</span>
               </p>
@@ -97,36 +85,4 @@ const servicios = [
       }
     </div>
   </section>
-
-  {
-    /* 
-  <!-- SECCIÓN ALTERNATIVA: Grid listado de servicios -->
-  <div class="grid grid-cols-1 gap-8 md:grid-cols-3 px-4 md:px-12">
-    {
-      servicios.map((servicio) => (
-        <div class="flex flex-col items-center rounded-lg py-2 inset-shadow-sm inset-shadow-black bg-neutral-950">
-          <div class="h-full flex flex-col items-center justify-start">
-            <Image
-              src={servicio.image}
-              alt={servicio.nombre}
-              loading="lazy"
-              class="object-cover h-40 md:h-60 rounded-xl scale-75 md:scale-50 hover:scale-90 transition-transform duration-700"
-            />
-            <h3 class="text-2xl md:text-3xl font-semibold py-2 text-center">
-              {servicio.nombre}
-            </h3>
-            <p class="text-2xl font-semibold text-gray-300 mb-2 text-center">
-              {servicio.precio.toLocaleString("es-CL", {
-                style: "currency",
-                currency: "CLP",
-              })}
-            </p>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-  -->
-  */
-  }
 </div>

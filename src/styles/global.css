@@ -3,6 +3,16 @@
 @plugin "@midudev/tailwind-animations";
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   font-family: "Onest Variable", system-ui, sans-serif;
 }

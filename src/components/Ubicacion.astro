@@ -1,17 +1,116 @@
 ---
-
+import { site, whatsappLink, directionsLink } from "../lib/site";
 ---
 
-<div class="">
-  <h3 class="py-12 text-4xl text-center md:text-4xl font-semibold">
-    Ubicación
-  </h3>
-  <div class="flex justify-center pb-12">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4004.7975665449144!2d-71.5753801242049!3d-35.84512207253485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDUwJzQyLjQiUyA3McKwMzQnMjIuMSJX!5e1!3m2!1ses-419!2scl!4v1759981611925!5m2!1ses-419!2scl"
-      class="w-[90%] md:w-[800px] h-[400px] md:h-[600px] rounded-lg transition-shadow duration-300 inset-shadow-sm inset-shadow-black bg-neutral-950 border border-neutral-800"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div id="ubicacion" class="scroll-mt-20 pb-12">
+  <h3 class="py-12 text-center text-4xl font-semibold">Ubicación y horarios</h3>
+
+  <div class="grid gap-6 lg:grid-cols-[1fr_1.6fr]">
+    <!-- Información -->
+    <div
+      class="flex flex-col justify-between rounded-2xl border border-neutral-800 bg-neutral-950 p-6"
+    >
+      <div class="space-y-6">
+        <div class="flex items-start gap-3">
+          <svg
+            class="mt-0.5 h-5 w-5 shrink-0 text-lime-500"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z" />
+            <circle cx="12" cy="10" r="2.5" />
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-white">Dirección</p>
+            <p class="text-sm text-gray-400">{site.address}</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <svg
+            class="mt-0.5 h-5 w-5 shrink-0 text-lime-500"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-white">Horarios</p>
+            <ul class="mt-1 space-y-1 text-sm text-gray-400">
+              {
+                site.hours.map((hora) => (
+                  <li class="flex justify-between gap-4">
+                    <span>{hora.days}</span>
+                    <span class="text-gray-300">{hora.time}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <svg
+            class="mt-0.5 h-5 w-5 shrink-0 text-lime-500"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <use href="#whatsapp-icon" />
+          </svg>
+          <div>
+            <p class="text-sm font-semibold text-white">Contacto</p>
+            <a
+              href={whatsappLink("Hola, quiero agendar un lavado en Carwash Black.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-gray-400 transition hover:text-lime-400"
+            >
+              {site.phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+        <a
+          href={directionsLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-lime-500 px-5 py-2.5 text-sm font-bold text-black transition hover:bg-lime-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+        >
+          Cómo llegar
+        </a>
+        <a
+          href={whatsappLink("Hola, quiero agendar un lavado en Carwash Black.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-gray-200 transition hover:border-lime-500/60 hover:text-lime-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
+        >
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4004.7975665449144!2d-71.5753801242049!3d-35.84512207253485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDUwJzQyLjQiUyA3McKwMzQnMjIuMSJX!5e1!3m2!1ses-419!2scl!4v1759981611925!5m2!1ses-419!2scl"
+        title="Ubicación de Carwash Black en Linares"
+        class="h-80 w-full lg:h-full lg:min-h-100"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </div>

@@ -1,4 +1,6 @@
 ---
+import { site, whatsappLink } from "../lib/site";
+
 interface Props {
   year?: number;
   title?: string;
@@ -7,15 +9,29 @@ interface Props {
 
 const {
   year = new Date().getFullYear(),
-  title = "Carwash Black",
+  title = site.name,
   author = "Er1kDev",
 } = Astro.props;
 ---
 
-<footer class="py-6 md:py-12 text-center border-t border-stone-800">
-  <p class="text-sm md:text-base">
+<footer
+  class="container mx-auto mt-8 border-t border-stone-800 px-4 py-8 pb-24 md:pb-8 text-center"
+>
+  <p class="text-sm text-gray-400">
+    <a
+      href={whatsappLink("Hola, quiero agendar un lavado en Carwash Black.")}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="transition hover:text-lime-400"
+      >{site.phoneDisplay}</a
+    >
+    <span aria-hidden="true"> · </span>
+    {site.address}
+  </p>
+
+  <p class="mt-2 text-xs text-gray-600">
     &copy; {year} - {title}. Desarrollado por
-    <span class="text-gray-400 hover:underline font-bold"> {author}</span>
+    <span class="font-bold text-gray-400">{author}</span>
     con Astro
   </p>
 </footer>
