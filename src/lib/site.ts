@@ -25,6 +25,16 @@ export const site = {
     instagram: "https://www.instagram.com/carwash__black/",
     whatsapp: "https://wa.me/c/56939570405",
   },
+
+  /** Historias destacadas de Instagram. */
+  highlights: {
+    clientes:
+      "https://www.instagram.com/stories/highlights/17941251518483065/",
+    horariosPrecios:
+      "https://www.instagram.com/stories/highlights/17980547835047577/",
+    retiros:
+      "https://www.instagram.com/stories/highlights/17938514238241485/",
+  },
 } as const;
 
 /** Link a WhatsApp con mensaje prellenado. */

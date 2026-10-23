@@ -10,22 +10,19 @@ const items = [
     imagen: Clientes,
     alt: "Clientes satisfechos de Carwash Black",
     label: "Clientes",
-    href: site.social.instagram,
-    externo: true,
+    href: site.highlights.clientes,
   },
   {
     imagen: HorariosPrecios,
     alt: "Horarios y precios de Carwash Black",
     label: "Horarios y precios",
-    href: "#precios",
-    externo: false,
+    href: site.highlights.horariosPrecios,
   },
   {
     imagen: Retiros,
     alt: "Servicio de retiro y entrega a domicilio",
     label: "Retiros y entregas",
-    href: "#servicios",
-    externo: false,
+    href: site.highlights.retiros,
   },
 ];
 ---
@@ -38,8 +35,9 @@ const items = [
     items.map((item) => (
       <a
         href={item.href}
-        target={item.externo ? "_blank" : undefined}
-        rel={item.externo ? "noopener noreferrer" : undefined}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${item.label} en Instagram`}
         class="group flex flex-col items-center gap-2 rounded-2xl px-1 py-2 transition hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
       >
         <Image
